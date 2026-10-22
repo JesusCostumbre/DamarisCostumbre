@@ -136,16 +136,17 @@ document.addEventListener('DOMContentLoaded', () => {
       const servicio = serviceInput.value;
       const dudas = notesInput.value.trim();
 
-      // Construcción del mensaje formateado para WhatsApp
-      let mensajeWA = `¡Hola Damaris! Vengo desde tu sitio web y solicito una asesoría:\n\n`;
-      mensajeWA += `• *Nombre:* ${nombre}\n`;
-      mensajeWA += `• *Servicio de interés:* ${servicio}\n`;
-      mensajeWA += `• *Teléfono:* ${telefono}\n`;
-      mensajeWA += `• *Correo:* ${correo}\n`;
+      let mensajeWA = `Hola Damaris, me gustaría agendar una asesoría contigo. Vi tu página web y te comparto mis datos:\n\n`;
+      mensajeWA += `* Nombre: ${nombre}\n`;
+      mensajeWA += `* Interés: ${servicio}\n`;
+      mensajeWA += `* Teléfono: ${telefono}\n`;
+      mensajeWA += `* Correo: ${correo}\n`;
+
       if (dudas) {
-        mensajeWA += `• *Objetivo / Duda:* ${dudas}\n`;
+        mensajeWA += `\n* Comentarios:\n${dudas}\n`;
       }
 
+      mensajeWA += `\nQuedo atento/a para coordinar fecha y horario.`;
       // Generación del enlace con codificación segura
       const waUrl = `https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent(mensajeWA)}`;
 
