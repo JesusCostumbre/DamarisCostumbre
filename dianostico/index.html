@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Descubre tu Salud Financiera en Minutos | Damaris Costumbre Economista</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Work+Sans:ital@0;1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <div class="logo">
+            <h1 href="./index.html">Damaris Costumbre Economista</h1>
+        </div>
+    </header>
+
+    <main>
+        
+        <section id="hero" class="hero">
+            <h2>Descubre tu Salud Financiera en Minutos</h2>
+            <p>Utiliza nuestra herramienta gratuita para obtener un análisis claro de tu situación financiera actual y dar el primer paso hacia un futuro seguro y planificado.</p>
+
+            <article id="asesora-seccion" class="asesora-presentacion">
+                <div class="contenido-asesora">
+                    <div class="asesora-texto">
+                        <h2>Conoce a tu asesora, <br><span class="letras-azules">Damaris Costumbre</span></h2>
+                        <p>Con experiencia en el sector financiero y asegurador, mi misión es ayudarte a navegar las complejidades de la planificación financiera con confianza y claridad...</p>
+                    </div>
+                    <img src="assets/foto_perfil.webp" alt="Retrato profesional de Damaris Costumbre, Asesora de Seguros." width="300" height="400">
+                </div>
+            </article>
+        </section> 
+        
+        <section id="calculadora" class="container">
+            <h3>🧾 Check Up Financiero Profesional</h3>
+            <p>Descubre cómo estás manejando tus finanzas personales y qué áreas puedes mejorar. Tardarás menos de 2 minutos en responder.</p>
+            
+            <form id="quizForm">
+                <fieldset class="habitos-financieros">
+                    <legend>Sección 1: Hábitos financieros</legend>
+                    <p>1. ¿Llevas un registro o control de tus ingresos y gastos mensualmente?</p>
+                    <label><input type="radio" name="q1_registro" value="siempre" required> <span>Sí, siempre</span></label>
+                    <label><input type="radio" name="q1_registro" value="a_veces" required> <span>A veces</span></label>
+                    <label><input type="radio" name="q1_registro" value="no_nunca" required> <span>No, nunca</span></label>
+                    <hr>
+                    <p>2. ¿Qué porcentaje de tus ingresos logras ahorrar mensualmente?</p>
+                    <label><input type="radio" name="q2_ahorro_porcentaje" value="mas_20" required> <span>Más del 20%</span></label>
+                    <label><input type="radio" name="q2_ahorro_porcentaje" value="entre_10_20" required> <span>Entre 10% y 20%</span></label>
+                    <label><input type="radio" name="q2_ahorro_porcentaje" value="menos_10" required> <span>Menos del 10%</span></label>
+                    <label><input type="radio" name="q2_ahorro_porcentaje" value="no_ahorro" required> <span>No ahorro</span></label>
+                    <hr>
+                    <p>3. ¿Tienes un fondo de emergencia equivalente a 3 o más meses de tus gastos?</p>
+                    <label><input type="radio" name="q3_fondo_emergencia" value="si" required> <span>Sí</span></label>
+                    <label><input type="radio" name="q3_fondo_emergencia" value="en_proceso" required> <span>Estoy en proceso</span></label>
+                    <label><input type="radio" name="q3_fondo_emergencia" value="no" required> <span>No</span></label>
+                </fieldset>
+
+                <fieldset class="proteccion-seguridad">
+                    <legend>Sección 2: Protección y seguridad</legend>
+                    <p>4. ¿Cuentas con algún seguro de vida o de gastos médicos mayores?</p>
+                    <label><input type="radio" name="q4_seguros" value="ambos" required> <span>Sí, ambos</span></label>
+                    <label><input type="radio" name="q4_seguros" value="solo_uno" required> <span>Solo uno de ellos</span></label>
+                    <label><input type="radio" name="q4_seguros" value="ninguno" required> <span>Ninguno</span></label>
+                    <hr>
+                    <p>5. Si llegaras a faltar, ¿tu familia tendría un respaldo económico?</p>
+                    <label><input type="radio" name="q5_respaldo_familiar" value="si" required> <span>Sí</span></label>
+                    <label><input type="radio" name="q5_respaldo_familiar" value="no_seguro" required> <span>No estoy seguro/a</span></label>
+                    <label><input type="radio" name="q5_respaldo_familiar" value="no" required> <span>No</span></label>
+                </fieldset>
+
+                <fieldset class="planeacion-futuro">
+                    <legend>Sección 3: Planeación y futuro</legend>
+                    <p>6. ¿Tienes un plan para tu retiro o estás aportando a un instrumento de inversión a largo plazo?</p>
+                    <label><input type="radio" name="q6_plan_retiro" value="si" required> <span>Sí</span></label>
+                    <label><input type="radio" name="q6_plan_retiro" value="me_interesa" required> <span>No, pero me interesa</span></label>
+                    <label><input type="radio" name="q6_plan_retiro" value="no" required> <span>No</span></label>
+                    <hr>
+                    <p>7. ¿Sabes cuánto necesitarías para mantener tu estilo de vida cuando te retires?</p>
+                    <label><input type="radio" name="q7_necesidad_retiro" value="si" required> <span>Sí</span></label>
+                    <label><input type="radio" name="q7_necesidad_retiro" value="no_calculado" required> <span>No, nunca lo he calculado</span></label>
+                    <hr>
+                    <p>8. ¿Estás aprovechando las deducciones fiscales que te permiten tus seguros o planes de retiro?</p>
+                    <label><input type="radio" name="q8_deducciones" value="si" required> <span>Sí</span></label>
+                    <label><input type="radio" name="q8_deducciones" value="no" required> <span>No</span></label>
+                    <label><input type="radio" name="q8_deducciones" value="no_se" required> <span>No sé</span></label>
+                </fieldset>
+
+                <fieldset class="planeacion-futuro">
+                    <legend>Sección 4: Tu relación con el dinero</legend>
+                    <p>9. ¿Cómo describirías tu relación con el dinero?</p>
+                    <label><input type="radio" name="q9_relacion_dinero" value="en_control" required> <span>Me siento en control</span></label>
+                    <label><input type="radio" name="q9_relacion_dinero" value="tranquilidad" required> <span>Me da tranquilidad</span></label>
+                    <label><input type="radio" name="q9_relacion_dinero" value="manejar_mejor" required> <span>Siento que podría manejarlo mejor</span></label>
+                    <label><input type="radio" name="q9_relacion_dinero" value="estres" required> <span>Me genera estrés</span></label>
+                    <hr>
+                    <p>10. Si hoy recibieras $100,000 pesos, ¿qué harías con ese dinero?</p>
+                    <label><input type="radio" name="q10_cien_mil" value="invertir" required> <span>Lo invertiría</span></label>
+                    <label><input type="radio" name="q10_cien_mil" value="ahorrar_e_invertir" required> <span>Ahorraría una parte e invertiría otra</span></label>
+                    <label><input type="radio" name="q10_cien_mil" value="pagar_deudas" required> <span>Lo usaría para pagar deudas</span></label>
+                    <label><input type="radio" name="q10_cien_mil" value="gastar" required> <span>Lo gastaría en algo que quiero</span></label>
+                    <label><input type="radio" name="q10_cien_mil" value="no_saber" required> <span>No sabría qué hacer</span></label>
+                    <hr>
+                    <p>11. ¿Dónde guardas la mayor parte de tus ahorros actualmente?</p>
+                    <label><input type="radio" name="q11_donde_ahorras" value="inversiones" required> <span>En instrumentos de inversión (fondos, Cetes, planes de retiro, etc.)</span></label> 
+                    <label><input type="radio" name="q11_donde_ahorras" value="cuenta_tradicional" required> <span>Cuenta bancaria tradicional</span></label>
+                    <label><input type="radio" name="q11_donde_ahorras" value="casa_efectivo" required> <span>En casa o efectivo</span></label>
+                    <label><input type="radio" name="q11_donde_ahorras" value="no_tengo_ahorros" required> <span>No tengo ahorros</span></label>
+                </fieldset>
+
+                <fieldset class="contacto">
+                    <legend>Datos de Contacto</legend>
+                    <p style="text-align: left;">Para recibir tu diagnóstico personalizado, introduce tu nombre y correo:</p>
+                    <input type="text" name="Nombre_Usuario" placeholder="Tu nombre completo" required>
+                    <input 
+                        type="email" 
+                        name="_replyto" 
+                        placeholder="Tu correo electrónico" 
+                        required
+                        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+                        title="Introduce una dirección de correo electrónico válida (ej: nombre@dominio.com)"
+                    >
+                </fieldset>
+
+                <input type="hidden" name="Resultado_Analisis_Final">
+                <input type="hidden" name="Porcentaje">
+                <input type="hidden" name="Diagnostico_Mensaje">
+                <input type="hidden" name="Puntuacion">
+                <input type="hidden" name="Estado_Puntuacion">
+                <input type="hidden" name="Fondo_Emergencia">
+                <input type="hidden" name="Estado_Emergencia">
+                <input type="hidden" name="Cobertura_Proteccion">
+                <input type="hidden" name="Estado_Proteccion">
+                <input type="hidden" name="Rec_Proteccion">
+                <input type="hidden" name="Rec_Retiro">
+
+                <div class="form-group" style="margin-bottom: 1rem; text-align: left;">
+                    <input type="checkbox" id="acepto-privacidad" name="acepto-privacidad" required style="margin-right: 0.5rem; cursor: pointer;">
+                    <label for="acepto-privacidad" style="font-size: 0.85rem; color: #666; cursor: pointer;">
+                        Al obtener el análisis, aceptas nuestro 
+                        <a href="./aviso-de-privacidad.html" target="_blank" style="color: #0056b3; text-decoration: underline;">Aviso de Privacidad</a>.
+                    </label>
+                </div>
+
+                <button type="submit" id="btn-submit">Obtener Análisis Gratuito</button>
+            </form>
+        </section>
+        
+        
+        <section id="resultados-analisis" class="container hidden">
+            <div id="pdf-content-wrapper"> 
+                <div class="resultados-header">
+                    <h2 id="titulo-resultados">Aquí están tus resultados, [Nombre]</h2> 
+                </div>
+
+                <div class="evaluacion-general-card">
+                    <div class="grafico" id="grafico-progreso">
+                        <span id="porcentaje-display">30%</span> 
+                    </div>
+                    <div class="texto-evaluacion">
+                        <p class="etiqueta">EVALUACIÓN GENERAL</p>
+                        <h3 id="diagnostico-titulo">Tu Situación Financiera: [Diagnóstico]</h3>
+                        <p id="diagnostico-mensaje">El análisis indica que tienes hábitos saludables, pero te falta protección...</p>
+                    </div>
+                </div>
+
+                <div class="resumen-analisis">
+                    <h3>Resumen de tu Análisis</h3>
+                    <div class="metricas-grid">
+                        <div class="metrica-card">
+                            <p>Puntuación Total</p>
+                            <strong id="metrica-puntuacion">18/24</strong>
+                            <span id="estado-puntuacion" class="estado-neutro">Buena Evaluación</span>
+                        </div>
+                        <div class="metrica-card">
+                            <p>Fondo de Emergencia</p>
+                            <strong id="metrica-emergencia">No Cubierto</strong>
+                            <span id="estado-emergencia" class="estado-alerta">Atención Requerida</span>
+                        </div>
+                        <div class="metrica-card">
+                            <p>Cobertura de Protección</p>
+                            <strong id="metrica-proteccion">Ausente</strong>
+                            <span id="estado-proteccion" class="estado-alerta">Riesgo Alto</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="recomendaciones-personalizadas">
+                    <h3>Recomendaciones Personalizadas</h3>
+                    <div class="recomendacion-item">
+                        <p class="recomendacion-titulo">Aumentar Protección</p>
+                        <p id="rec-proteccion-detalle">Dado que no cuentas con cobertura médica o de vida, te recomendamos explorar opciones flexibles para proteger el patrimonio y los ingresos de tu familia ante un evento inesperado.</p>
+                    </div>
+                    <div class="recomendacion-item">
+                        <p class="recomendacion-titulo">Optimizar Ahorro para el Retiro</p>
+                        <p id="rec-retiro-detalle">Estás ahorrando, ¡felicidades! Sin embargo, para tu edad, es crucial canalizar parte de ese ahorro a planes de retiro que ofrezcan ventajas fiscales y un crecimiento compuesto garantizado.</p>
+                    </div>
+                </div>
+
+                <div class="cta-asesoria-resultados">
+                    <h3>Convierte este análisis en un plan de acción</h3>
+                    <p>Una asesoría personalizada nos permitirá profundizar en tus metas y crear una estrategia a tu medida. Es gratuita, sin compromiso y es el siguiente paso para asegurar tu futuro.</p>
+                    <a href="#" class="btn-asesoria">Agendar una Asesoría Gratuita</a>
+                </div>
+
+                <div class="asesora-contacto-resultados">
+                    <img src="/dianostico/assets/foto_perfil.webp" alt="Retrato de Damaris Costumbre, Agente de Seguros Certificada">
+                    <div style="flex-grow: 1;">
+                        <p><strong>Damaris Costumbre</strong><br>Agente de Seguros Certificada</p>
+                        <p style="color: var(--color-support); font-size: 0.85rem;">Mi misión es ayudarte a construir un futuro financiero sólido y tranquilo.</p>
+                    </div>
+                </div>
+
+                <a href="#" id="btn-regresar-inicio" class="btn-descargar-pdf"> Regresar al Inicio</a>
+                <p class="confidencialidad-resultados">Tus datos son confidenciales y están protegidos. No serán compartidos con terceros.</p>
+            </div>
+        </section>
+
+        <section class="llamada-accion-secundaria">
+            <h2>¿Listo para mejorar tu futuro financiero?</h2>
+            <p>Un análisis es el primer paso. Permíteme ayudarte a interpretar tus resultados y crear un plan de acción personalizado para alcanzar tus metas.</p>
+            <a href="#" class="btn-asesoria">Agendar una Asesoría Gratuita</a>
+        </section>
+
+    </main>
+
+    <footer class="text-center py-6 text-sm text-gray-500">
+  <p>© 2025 Damaris Costumbre Seguros. Todos los derechos reservados.</p>
+  <p>Tus datos son confidenciales y están protegidos.</p>
+  <div class="mt-2">
+    <a href="./aviso-de-privacidad.html" class="hover:underline">Aviso de Privacidad</a> | 
+  </div>
+</footer>
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script type="text/javascript">
+       (function(){
+          emailjs.init({
+            publicKey: "7vxaO77nHttziBi1S", // <--- OJO: Recuerda volver a poner tu código de EmailJS aquí
+          });
+       })();
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>

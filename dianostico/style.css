@@ -1,0 +1,711 @@
+/* ======================================================= */
+        /* 0. Configuración Base y Variables (Mobile First) */
+        /* ======================================================= */
+
+        :root {
+            /* Colores de Marca y Acciones */
+            --color-primary: #007bff; /* Azul Principal para acentos */
+            --color-primary-light: #e6f2ff; /* Azul muy claro para fondos de selección */
+            --color-primary-dark: #0056b3; /* Azul más oscuro para hover */
+            --color-secondary: #004d40; /* Verde oscuro para CTA/Secciones */
+            
+            /* Colores de Texto (Ajustados a negros sutiles) */
+            --color-heading: #212529; /* Negro Estándar para Títulos */
+            --color-text: #343a40; /* Negro "Bajo" para Párrafos */
+            --color-support: #6c757d; /* Gris de Apoyo/Notas */
+            --color-white: #ffffff;
+
+            /* Colores de Fondo y Bordes (Gris claro para fondo) */
+            --color-background: #f8f9fa; /* Gris de fondo muy ligero y limpio */
+            --color-card-background: #ffffff; /* Blanco puro para tarjetas */
+            --color-border: #dee2e6; /* Borde más sutil */
+            --color-hover-bg: #e9ecef; /* Fondo de hover para elementos */
+
+            /* Colores de Estado para Resultados */
+            --color-status-success: #28a745;
+            --color-status-warning: #ffc107;
+            --color-status-alert: #dc3545;
+            
+            /* Tipografía (Usando las fuentes importadas) */
+            --font-heading: 'Public Sans', sans-serif;
+            --font-body: 'Roboto', 'Work Sans', sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-body);
+            margin: 0;
+            padding: 0;
+            background-color: var(--color-background);
+            color: var(--color-text);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        h1, h2, h3 {
+            font-family: var(--font-heading);
+            color: var(--color-heading);
+            line-height: 1.2;
+            margin: 0 0 10px 0;
+            font-weight: 700;
+        }
+
+        h1 { font-size: 2.2rem; }
+        h2 { font-size: 1.8rem; }
+        h3 { font-size: 1.3rem; }
+
+        .container {
+            padding: 0 20px;
+            max-width: 1200px;
+            margin: auto;
+        }
+        
+        .hidden {
+            display: none !important;
+        }
+
+        /* ======================================================= */
+        /* A. HEADER (Encabezado) */
+        /* ======================================================= */
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            background-color: var(--color-white);
+            /* Sombra tenue pero marcada */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.12); 
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo h1 {
+            font-family: var(--font-heading);
+            font-weight: 500;
+            font-size: 1.1rem;
+            color: var(--color-primary);
+            text-decoration: none;
+            margin: 0;
+        }
+
+        /* ======================================================= */
+        /* B. HERO & INTRO */
+        /* ======================================================= */
+        
+        #hero {
+            padding: 40px 20px 20px;
+            text-align: center;
+        }
+        
+        #hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            max-width: 600px;
+            margin: 0 auto 15px;
+        }
+        
+        #hero p {
+            color: var(--color-support);
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+
+        .letras-azules{
+            color: var(--color-primary);
+        }
+        /* ======================================================= */
+        /* C. ASESORA PRESENTACION (Mobile First) */
+        /* ======================================================= */
+        
+        .asesora-presentacion {
+            background: var(--color-white);
+            border-radius: 16px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+            margin: 30px auto;
+            max-width: 900px;
+            overflow: hidden;
+        }
+
+        .contenido-asesora {
+            display: flex;
+            flex-direction: column; /* Apilado en móvil */
+        }
+
+        .asesora-presentacion h2 {
+            padding: 30px 20px 0;
+            font-size: 1.5rem;
+        }
+
+        .asesora-texto{
+            align-content: center;
+            padding: 0;
+        }
+        
+        .contenido-asesora p {
+            padding: 0 20px 20px;
+            margin: 0;
+            font-size: 0.95rem;
+            color: var(--color-text);
+        }
+
+        .contenido-asesora img {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            flex-shrink: 0;
+            order: -1; /* Coloca la imagen arriba en la pila móvil */
+            border-radius: 16px 16px 0 0;
+        }
+
+        /* ======================================================= */
+        /* D. CALCULADORA (Formulario Estilizado) */
+        /* ======================================================= */
+        
+        #calculadora {
+            background: var(--color-white);
+            border-radius: 16px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+            margin: 30px auto;
+            padding: 30px 20px;
+            max-width: 700px;
+            width: 100%;
+        }
+        
+        #calculadora h2 { display: none; /* Título principal se maneja en el Hero */ }
+        #calculadora h3 {
+            text-align: center;
+            color: var(--color-primary); /* Azul principal para la etiqueta */
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        #calculadora p:not(.aviso-legal-form) {
+            text-align: center;
+            margin-bottom: 25px;
+            color: var(--color-support);
+            font-size: 0.95rem;
+        }
+
+        /* Fieldset y Leyenda (Separación de Secciones) */
+        fieldset {
+            border: 1px solid var(--color-border);
+            border-radius: 12px;
+            padding: 25px 15px 15px;
+            margin-bottom: 30px;
+            background-color: var(--color-background);
+            box-shadow: inset 0 1px 3px rgba(0,0,0,0.03); 
+        }
+        
+        legend {
+            font-weight: 700;
+            font-size: 1.15rem;
+            color: var(--color-heading);
+            padding: 5px 15px;
+            margin-left: -5px;
+            background-color: var(--color-white);
+            border-radius: 6px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05); 
+        }
+        
+        fieldset p {
+            text-align: left;
+            font-weight: 600;
+            color: var(--color-text);
+            margin: 0 0 20px 0;
+            padding-left: 5px;
+            font-size: 1rem;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid var(--color-border);
+            margin: 25px 0;
+        }
+
+        /* Opciones de Radio (Mejor Tarea para Tocar) */
+        fieldset label {
+            display: flex; 
+            align-items: center;
+            background-color: var(--color-white);
+            padding: 14px 20px;
+            margin-bottom: 10px;
+            border-radius: 10px;
+            border: 1px solid var(--color-border);
+            cursor: pointer;
+            transition: all 0.25s ease;
+            position: relative;
+            font-size: 0.95rem;
+        }
+        
+        fieldset label:hover {
+            border-color: var(--color-primary);
+            background-color: var(--color-hover-bg);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+            transform: translateY(-2px);
+        }
+
+        fieldset input[type="radio"] {
+            appearance: none; 
+            -webkit-appearance: none;
+            width: 20px; 
+            height: 20px;
+            border: 2px solid var(--color-support);
+            border-radius: 50%;
+            margin-right: 15px; 
+            position: relative;
+            flex-shrink: 0;
+            transition: all 0.25s ease;
+        }
+        
+        fieldset input[type="radio"]:checked {
+            border-color: var(--color-primary);
+            background-color: var(--color-primary-light); 
+        }
+        
+        fieldset input[type="radio"]:checked::after {
+            content: '';
+            position: absolute;
+            top: 4px; 
+            left: 4px;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--color-primary); 
+        }
+
+        fieldset input[type="radio"]:checked + span { 
+            font-weight: 600;
+            color: var(--color-primary-dark);
+        }
+
+        /* Inputs de Contacto */
+        .contacto input[type="text"], 
+        .contacto input[type="email"] {
+            width: 100%;
+            padding: 14px;
+            margin-bottom: 15px;
+            border: 1px solid var(--color-border);
+            border-radius: 10px;
+            font-size: 1rem;
+            color: var(--color-text);
+            transition: border-color 0.2s, box-shadow 0.2s;
+            background-color: var(--color-background);
+        }
+
+        .contacto input:focus {
+            border-color: var(--color-primary);
+            box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+            outline: none;
+            background-color: var(--color-card-background);
+        }
+        
+        /* Botón de Submit */
+        #quizForm button[type="submit"] {
+            display: block;
+            width: 100%;
+            text-align: center;
+            padding: 16px 30px; 
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 700;
+            text-decoration: none;
+            transition: background-color 0.25s ease, box-shadow 0.25s ease, transform 0.1s ease;
+            background-color: var(--color-primary); 
+            color: var(--color-white);
+            font-size: 1.15rem;
+            margin-top: 30px; 
+            box-shadow: 0 6px 15px rgba(0, 123, 255, 0.3);
+        }
+
+        #quizForm button[type="submit"]:hover {
+            background-color: var(--color-primary-dark);
+            box-shadow: 0 8px 20px rgba(0, 123, 255, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .aviso-legal-form {
+            text-align: center;
+            font-size: 0.8rem;
+            color: var(--color-support);
+            margin-top: 20px;
+        }
+        
+        /* ======================================================= */
+        /* E. SECCIÓN RESULTADOS (Grid para Métricas) */
+        /* ======================================================= */
+
+        #resultados-analisis {
+            background: var(--color-white);
+            border-radius: 16px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+            margin: 30px auto;
+            padding: 30px 20px;
+            max-width: 900px;
+            text-align: center;
+        }
+        
+        /* **NUEVO WRAPPER para impresión ajustada** */
+        #pdf-content-wrapper {
+            /* IMPORTANTE: Aplicar un padding grande aquí, que se convertirá en margen blanco del PDF */
+            padding: 30px 0; 
+            margin: 0;
+            width: 100%;
+        }
+
+        .resultados-header {
+            margin-bottom: 30px;
+        }
+        
+        .resultados-header p {
+            color: var(--color-support);
+        }
+
+        .evaluacion-general-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            border-radius: 12px;
+            background-color: var(--color-primary-light); /* Fondo azul claro para destacar */
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .evaluacion-general-card .grafico {
+            margin-bottom: 20px;
+            width: 100px;
+            height: 100px;
+        }
+        
+        .evaluacion-general-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .evaluacion-general-card .etiqueta {
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--color-primary-dark);
+            margin-bottom: 5px;
+        }
+
+        .evaluacion-general-card h3 {
+            font-size: 1.5rem;
+            color: var(--color-primary-dark);
+            margin-bottom: 10px;
+        }
+        
+        .evaluacion-general-card p:last-child {
+            color: var(--color-text);
+        }
+
+        /* Métricas Grid - Mobile: Staked */
+        .metricas-grid {
+            display: grid;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .metrica-card {
+            background-color: var(--color-background);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .metrica-card p {
+            font-size: 0.9rem;
+            color: var(--color-support);
+            margin-bottom: 5px;
+        }
+
+        .metrica-card strong {
+            display: block;
+            font-size: 1.5rem;
+            color: var(--color-heading);
+            margin-bottom: 5px;
+        }
+
+        /* Clases de Estado */
+        .estado-alerta {
+            color: var(--color-status-alert); /* Rojo */
+            font-weight: 600;
+        }
+        .estado-neutro {
+            color: var(--color-primary); /* Azul */
+            font-weight: 600;
+        }
+        .estado-satisfactorio {
+            color: var(--color-status-success); /* Verde */
+            font-weight: 600;
+        }
+        
+        .recomendacion-item {
+            text-align: left;
+            padding: 15px 0;
+            border-bottom: 1px dashed var(--color-border);
+        }
+        
+        .recomendacion-item:last-child {
+            border-bottom: none;
+        }
+
+        .recomendacion-titulo {
+            font-weight: 700;
+            color: var(--color-heading);
+            margin-bottom: 5px;
+        }
+
+        .cta-asesoria-resultados {
+            background-color: var(--color-secondary);
+            color: var(--color-white);
+            padding: 30px 20px;
+            border-radius: 12px;
+            margin-top: 30px;
+        }
+
+        .cta-asesoria-resultados h3,
+        .cta-asesoria-resultados p {
+            color: var(--color-white);
+            margin-bottom: 15px;
+        }
+
+        .btn-asesoria {
+            display: inline-block;
+            text-decoration: none;
+            background-color: var(--color-primary);
+            color: var(--color-white);
+            padding: 12px 25px;
+            border-radius: 8px;
+            font-weight: 700;
+            transition: background-color 0.2s;
+        }
+
+        .btn-asesoria:hover {
+            background-color: var(--color-primary-dark);
+        }
+        
+        .asesora-contacto-resultados {
+            display: flex;
+            align-items: center;
+            margin: 25px 0;
+            text-align: left;
+            border-top: 1px solid var(--color-border);
+            padding-top: 25px;
+        }
+        
+        .asesora-contacto-resultados img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 15px;
+        }
+        
+        .asesora-contacto-resultados p {
+            margin: 0;
+            text-align: left;
+            font-size: 0.9rem;
+        }
+        
+        .btn-descargar-pdf {
+            display: inline-block;
+            background-color: var(--color-support);
+            color: var(--color-white);
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 15px;
+            margin-right: 10px; /* Espacio entre botones */
+            transition: background-color 0.2s;
+        }
+        
+        .btn-descargar-pdf:hover {
+            background-color: #5a6268;
+        }
+
+        .confidencialidad-resultados {
+            font-size: 0.75rem;
+            color: var(--color-support);
+            margin-top: 15px;
+        }
+
+        /* ======================================================= */
+        /* F. LLAMADA A ACCIÓN SECUNDARIA */
+        /* ======================================================= */
+
+        .llamada-accion-secundaria {
+            background-color: var(--color-secondary);
+            color: var(--color-white);
+            text-align: center;
+            padding: 40px 20px;
+            margin-bottom: 40px;
+            border-radius: 16px;
+            max-width: 900px;
+            margin: 40px auto;
+        }
+
+        .llamada-accion-secundaria h2,
+        .llamada-accion-secundaria p {
+            color: var(--color-white);
+            margin-bottom: 15px;
+        }
+        
+        /* ======================================================= */
+        /* G. FOOTER */
+        /* ======================================================= */
+        
+        footer {
+            background-color: var(--color-heading); /* Negro oscuro */
+            color: #adb5bd; /* Gris claro */
+            padding: 30px 20px;
+            text-align: center;
+            font-size: 0.85rem;
+        }
+        
+        footer p {
+            margin: 5px 0;
+        }
+        
+        footer a, footer span {
+            color: var(--color-white);
+            text-decoration: none;
+            margin: 0 5px;
+        }
+
+        /* ======================================================= */
+        /* H. Media Query: Diseño Escritorio (Mayor a 768px) */
+        /* ======================================================= */
+        
+        @media (min-width: 768px) {
+            
+            /* General */
+            .container {
+                padding: 0 40px;
+            }
+            
+            /* Header */
+            header {
+                padding: 20px 40px;
+            }
+            
+            /* Hero */
+            #hero h1 {
+                font-size: 3.2rem;
+            }
+            
+            /* Asesora Presentation */
+            .asesora-presentacion {
+                margin: 40px auto;
+            }
+            
+            .contenido-asesora {
+                flex-direction: row-reverse; /* Imagen a la derecha, texto a la izquierda */
+            }
+            
+            .asesora-presentacion h2 {
+                padding: 40px 40px 20px;
+                font-size: 2rem;
+            }
+            
+            .contenido-asesora p {
+                padding: 0 40px 40px;
+            }
+
+            .contenido-asesora img {
+                width: 40%; /* Ancho de la imagen en escritorio */
+                height: auto;
+                order: 0;
+                border-radius: 0 16px 16px 0;
+            }
+            
+            /* Calculadora (Formulario) */
+            #calculadora {
+                padding: 50px;
+                margin: 60px auto;
+            }
+            
+            #quizForm button[type="submit"] {
+                width: auto;
+                margin: 40px auto 0 auto;
+                padding: 18px 40px;
+                font-size: 1.2rem;
+            }
+            
+            /* Resultados */
+            #resultados-analisis {
+                padding: 50px;
+            }
+            
+            .evaluacion-general-card {
+                flex-direction: row; /* Icono a la izquierda, texto a la derecha */
+                text-align: left;
+                padding: 30px;
+            }
+            
+            .evaluacion-general-card .grafico {
+                margin-right: 30px;
+                margin-bottom: 0;
+                flex-shrink: 0;
+            }
+            
+            .metricas-grid {
+                grid-template-columns: repeat(3, 1fr); /* 3 columnas en escritorio */
+            }
+            
+            /* CTA Secundaria */
+            .llamada-accion-secundaria {
+                padding: 60px 40px;
+            }
+        }
+        
+        /* ======================================================= */
+        /* I. CORRECCIÓN: CSS para Impresión (PDF) */
+        /* ======================================================= */
+
+        /* Eliminamos todas las reglas @media print ya que la funcionalidad de PDF fue removida */
+
+
+        #grafico-progreso {
+    /* El tamaño se hereda de .evaluacion-general-card .grafico (100x100), pero lo forzamos */
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    
+    /* Configuración Flex para centrar el porcentaje */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    /* Grosor del hueco de la dona */
+    background-color: var(--color-card-background);
+    
+    /* Sombra opcional para un efecto 3D sutil */
+    box-shadow: 0 0 0 8px var(--color-background) inset;
+    
+    /* Importante para que el JS pueda controlar el progreso */
+    position: relative; 
+    overflow: hidden; /* Oculta el fondo que se salga del círculo */
+}
+
+/* Estilo para el número de porcentaje en el centro */
+#porcentaje-display {
+    position: relative;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-text);
+    z-index: 2; /* Asegura que el texto esté encima del gráfico */
+}
+
+/* El fondo del gráfico de dona se genera por JS usando esta clase y conic-gradient */
+.progreso-satisfactorio { background-color: var(--color-status-success); }
+.progreso-neutro { background-color: var(--color-primary); }
+.progreso-alerta { background-color: var(--color-status-alert); }

@@ -22,10 +22,3 @@ El sitio está estructurado para presentar de manera clara soluciones de ahorro,
 
 ---
 
-## 📁 Estructura del Proyecto
-
-```text
-├── index.html        # Estructura semántica, accesibilidad y metadatos SEO
-├── styles.css        # Sistema de diseño, variables, componentes y media queries
-├── script.js         # Lógica de filtros, validación de formulario y modal
-└── README.md         # Documentación del proyecto
