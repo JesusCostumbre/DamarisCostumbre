@@ -1,16 +1,20 @@
 /**
- * Damaris Costumbre - Lógica de Interfaz y Conversión
- * Licenciada en Economía & Asesora Financiera
+ * Damaris Costumbre - Lógica de Interfaz y Enlace Directo a WhatsApp
+ * Economista & Asesora Financiera
  */
 
+// 1. Configuración: Ingresa tu número con código de país (ej. México: 521 + 10 dígitos)
+const WHATSAPP_PHONE = "529512513470";
+
 document.addEventListener('DOMContentLoaded', () => {
-  // 1. Asignación automática del año fiscal en footer
+
+  // 2. Asignación automática del año en el pie de página
   const yearElement = document.getElementById('currentYear');
   if (yearElement) {
     yearElement.textContent = new Date().getFullYear();
   }
 
-  // 2. Menú de Navegación Móvil (Hamburger)
+  // 3. Menú de Navegación Móvil (Hamburguesa)
   const navToggle = document.getElementById('navToggle');
   const navMenu = document.getElementById('navMenu');
   const navLinks = document.querySelectorAll('.nav-link, .nav-cta');
@@ -22,7 +26,6 @@ document.addEventListener('DOMContentLoaded', () => {
       navMenu.classList.toggle('is-open');
     });
 
-    // Cerrar menú al hacer clic en un enlace
     navLinks.forEach(link => {
       link.addEventListener('click', () => {
         navToggle.setAttribute('aria-expanded', 'false');
@@ -31,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 3. Filtrado Interactivo de Servicios
+  // 4. Filtrado de Tarjetas de Servicios por Categoría
   const filterTabs = document.querySelectorAll('.filter-tab');
   const serviceBoxes = document.querySelectorAll('.service-box');
 
@@ -57,12 +60,12 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // 4. Preselección de Servicio en Formulario al pulsar CTA de una tarjeta
+  // 5. Preseleccionar Servicio al pulsar "Quiero cotizar..." en cualquier tarjeta
   const serviceActionButtons = document.querySelectorAll('.service-action');
   const selectElement = document.getElementById('serviceInterest');
 
   serviceActionButtons.forEach(button => {
-    button.addEventListener('click', (e) => {
+    button.addEventListener('click', () => {
       const targetService = button.getAttribute('data-service');
       if (selectElement && targetService) {
         for (let i = 0; i < selectElement.options.length; i++) {
@@ -75,14 +78,12 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // 5. Validación y Envío del Formulario
+  // 6. Validación del Formulario y Envío de Datos por WhatsApp
   const contactForm = document.getElementById('contactForm');
 
   if (contactForm) {
     contactForm.addEventListener('submit', (e) => {
       e.preventDefault();
-      
-      // Limpiar errores previos
       clearErrors();
 
       const nameInput = document.getElementById('fullName');
@@ -100,48 +101,58 @@ document.addEventListener('DOMContentLoaded', () => {
         isValid = false;
       }
 
-      // Validación de Teléfono (al menos 10 dígitos)
-      const phoneClean = phoneInput.value.replace(/\D/g, '');
-      if (phoneClean.length < 10) {
-        showError('phone', 'Ingresa un teléfono válido a 10 dígitos.');
+      // Validación de Teléfono (mínimo 10 dígitos)
+      const phoneDigits = phoneInput.value.replace(/\D/g, '');
+      if (phoneDigits.length < 10) {
+        showError('phone', 'Ingresa un número telefónico válido a 10 dígitos.');
         isValid = false;
       }
 
-      // Validación de Email con Regex estándar
+      // Validación de Correo Electrónico
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       if (!emailRegex.test(emailInput.value.trim())) {
         showError('email', 'Ingresa un correo electrónico válido.');
         isValid = false;
       }
 
-      // Validación de Selección de Servicio
+      // Validación de Servicio seleccionado
       if (!serviceInput.value) {
-        showError('serviceInterest', 'Por favor elige un área de tu interés.');
+        showError('serviceInterest', 'Por favor selecciona el área de tu interés.');
         isValid = false;
       }
 
-      // Validación de Consentimiento
+      // Validación de Casilla de Privacidad
       if (!consentInput.checked) {
-        showError('privacyConsent', 'Debes autorizar el aviso de privacidad.');
+        showError('privacyConsent', 'Debes aceptar el aviso de privacidad.');
         isValid = false;
       }
 
       if (!isValid) return;
 
-      // Construcción del mensaje preconfigurado para WhatsApp
-      const clientName = encodeURIComponent(nameInput.value.trim());
-      const clientService = encodeURIComponent(serviceInput.value);
-      const clientNotes = encodeURIComponent(notesInput.value.trim() || 'Sin comentarios adicionales');
+      // Extracción de datos del cliente
+      const nombre = nameInput.value.trim();
+      const telefono = phoneInput.value.trim();
+      const correo = emailInput.value.trim();
+      const servicio = serviceInput.value;
+      const dudas = notesInput.value.trim();
 
-      const whatsappText = `¡Hola Damaris! Mi nombre es ${clientName}. Solicito una asesoría sobre: *${clientService}*.%0A%0A*Notas adicionales:* ${clientNotes}`;
-      
-      // Enlace oficial de WhatsApp
-      const whatsappURL = `https://wa.link/damariscostumbre?text=${whatsappText}`;
+      // Construcción del mensaje formateado para WhatsApp
+      let mensajeWA = `¡Hola Damaris! Vengo desde tu sitio web y solicito una asesoría:\n\n`;
+      mensajeWA += `• *Nombre:* ${nombre}\n`;
+      mensajeWA += `• *Servicio de interés:* ${servicio}\n`;
+      mensajeWA += `• *Teléfono:* ${telefono}\n`;
+      mensajeWA += `• *Correo:* ${correo}\n`;
+      if (dudas) {
+        mensajeWA += `• *Objetivo / Duda:* ${dudas}\n`;
+      }
 
-      // Feedback al usuario y redirección
-      alert(`¡Gracias ${nameInput.value.trim()}! Se abrirá WhatsApp para acordar el horario de tu sesión.`);
-      window.open(whatsappURL, '_blank', 'noopener,noreferrer');
-      
+      // Generación del enlace con codificación segura
+      const waUrl = `https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent(mensajeWA)}`;
+
+      // Abrir WhatsApp en una pestaña nueva
+      window.open(waUrl, '_blank', 'noopener,noreferrer');
+
+      // Limpiar el formulario
       contactForm.reset();
     });
   }
@@ -158,7 +169,7 @@ document.addEventListener('DOMContentLoaded', () => {
     errorSpans.forEach(span => span.textContent = '');
   }
 
-  // 6. Manejo del Modal de Aviso de Privacidad (Accesible con ESC)
+  // 7. Modal de Aviso de Privacidad
   const privacyModal = document.getElementById('privacyModal');
   const privacyTriggers = [
     document.getElementById('privacyTrigger'),
@@ -190,14 +201,16 @@ document.addEventListener('DOMContentLoaded', () => {
     modalCloseBtn.addEventListener('click', closeModal);
   }
 
-  // Cerrar al hacer clic fuera del contenido o pulsar Escape
+  // Cerrar al hacer clic en el fondo oscuro
   window.addEventListener('click', (e) => {
     if (e.target === privacyModal) closeModal();
   });
 
+  // Cerrar con tecla Escape
   window.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && privacyModal && privacyModal.classList.contains('is-active')) {
       closeModal();
     }
   });
+
 });

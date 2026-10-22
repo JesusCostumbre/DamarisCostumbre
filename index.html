@@ -14,6 +14,9 @@
   <link rel="canonical" href="https://damariscostumbre.com/">
 
   <!-- Open Graph (Facebook, WhatsApp, LinkedIn) -->
+   <!-- Open Graph / Redes -->
+<meta property="og:image" content="https://tudominio.com/img/damaris.jpg">
+<meta name="twitter:image" content="https://tudominio.com/img/damaris.jpg">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="es_MX">
   <meta property="og:site_name" content="Damaris Costumbre">
@@ -110,7 +113,14 @@
         <div class="hero-card-col">
           <aside class="advisor-card" aria-label="Credenciales del asesor">
             <div class="advisor-header">
-              <div class="avatar-badge" aria-hidden="true">DC</div>
+                <img 
+                    src="img/damaris.png" 
+                    alt="Damaris Costumbre - Economista y Asesora en Seguros e Inversiones" 
+                    class="advisor-photo"
+                    loading="eager"
+                    width="75" 
+                    height="75"
+                >
               <div>
                 <h2 class="advisor-name">Damaris Costumbre</h2>
                 <p class="advisor-title">Lic. en Economía (UABJO)</p>
@@ -304,30 +314,40 @@
       </div>
     </section>
 
-    <!-- 4. SOBRE MÍ -->
+    <!-- 4. SOBRE MÍ CON FOTOGRAFÍA ESTRATÉGICA -->
     <section id="sobre-mi" class="section" aria-labelledby="about-heading">
       <div class="container about-layout">
+        
+        <!-- Columna Izquierda: Retrato Profesional -->
         <div class="about-card-wrapper">
-          <div class="about-highlight-box">
-            <h3 class="highlight-name">Damaris Costumbre</h3>
-            <span class="highlight-sub">Economista & Asesora Certificada</span>
-            <blockquote class="about-quote">
-              “Las finanzas personales no son solo números fríos: significan tranquilidad, libertad y la seguridad para tomar decisiones en cada etapa de tu vida.”
-            </blockquote>
-            <div class="about-tags">
-              <span>UABJO</span>
-              <span>CNSF</span>
-              <span>Allianz México</span>
+          <div class="about-photo-card">
+            <img 
+              src="img/damaris.png" 
+              alt="Damaris Costumbre, economista y asesora certificada ante la CNSF" 
+              class="about-main-photo"
+              loading="lazy"
+              width="420"
+              height="500"
+            >
+            <div class="photo-floating-badge">
+              <strong class="badge-name">Damaris Costumbre</strong>
+              <span class="badge-role">Lic. en Economía (UABJO) · Agente CNSF</span>
+              <div class="badge-partner">Allianz México desde 2022</div>
             </div>
           </div>
         </div>
 
+        <!-- Columna Derecha: Historia y Metodología -->
         <div class="about-text-content">
           <span class="section-tag">Conóceme</span>
           <h2 id="about-heading" class="section-title">Finanzas claras, transparentes y a tu alcance</h2>
-          <p>Soy <strong>Licenciada en Economía por la Universidad Autónoma Benito Juárez de Oaxaca (UABJO)</strong> y asesora certificada con registro correspondiente ante la <strong>Comisión Nacional de Seguros y Fianzas (CNSF)</strong>.</p>
-          <p>Desde marzo de 2022 trabajo como agente de seguros con <strong>Allianz México</strong>, acompañando a personas y familias en la toma de decisiones informadas para crear patrimonio y blindar su economía.</p>
+          <p>Soy <strong>Licenciada en Economía por la Universidad Autónoma Benito Juárez de Oaxaca (UABJO)</strong> y asesora certificada con cédula y autorización ante la <strong>Comisión Nacional de Seguros y Fianzas (CNSF)</strong>.</p>
+          <p>Desde marzo de 2022 colaboro como agente de seguros con <strong>Allianz México</strong>, acompañando a personas y familias a tomar el control de su futuro mediante estrategias reales de ahorro, inversión, retiro y protección patrimonial.</p>
           
+          <blockquote class="about-quote">
+            “Las finanzas personales no son solo números fríos: significan tranquilidad, libertad y la seguridad para tomar decisiones en cada etapa de tu vida.”
+          </blockquote>
+
           <div class="pillars-container">
             <div class="pillar-item">
               <h4>1. Diagnóstico Real</h4>
@@ -347,6 +367,7 @@
             </div>
           </div>
         </div>
+
       </div>
     </section>
 
@@ -421,10 +442,30 @@
           <!-- Columna Enlaces Directos -->
           <div class="direct-channels">
             <div>
-              <h3 class="channels-title">¿Deseas una respuesta más rápida?</h3>
+              
+              <!-- ENCABEZADO CON AVATAR E INDICADOR EN LÍNEA -->
+              <div class="advisor-direct-header">
+                <div class="direct-avatar-wrap">
+                  <img 
+                    src="img/damaris.png" 
+                    alt="Damaris Costumbre" 
+                    class="direct-avatar-img"
+                    loading="lazy"
+                    width="56" 
+                    height="56"
+                  >
+                  <span class="status-dot" title="Lista para responder" aria-label="Disponible para responder"></span>
+                </div>
+                <div>
+                  <h3 class="channels-title" style="margin-bottom: 2px;">¿Prefieres hablar de inmediato?</h3>
+                  <span style="font-size: 0.8rem; color: #94a3b8;">Atención directa sin intermediarios</span>
+                </div>
+              </div>
+
               <p class="channels-desc">Puedes escribirme directamente por WhatsApp para revisar tus dudas específicas de inmediato.</p>
 
               <a href="https://wa.link/damariscostumbre" target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp btn-full">
+                <!-- Icono SVG de WhatsApp -->
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.031 2C6.49 2 2 6.49 2 12.031c0 1.97.57 3.81 1.56 5.37L2 22l4.76-1.52c1.5 1.01 3.29 1.58 5.27 1.58 5.54 0 10.03-4.49 10.03-10.03C22.06 6.49 17.57 2 12.031 2zm5.72 14.49c-.24.67-1.39 1.28-1.92 1.34-.51.06-1.16.08-3.74-.98-3.3-1.36-5.41-4.74-5.58-4.96-.16-.22-1.35-1.8-1.35-3.43 0-1.63.85-2.43 1.15-2.76.3-.33.66-.41.88-.41.22 0 .44 0 .63.01.2.01.47-.08.73.55.27.65.92 2.24 1 2.4.08.16.14.36.03.58-.11.22-.16.36-.33.55-.16.19-.34.42-.49.56-.16.16-.33.34-.14.67.19.33.84 1.39 1.8 2.25 1.24 1.1 2.28 1.44 2.61 1.6.33.16.52.14.71-.08.2-.22.82-.95 1.04-1.28.22-.33.44-.27.74-.16.3.11 1.92.9 2.25 1.06.33.16.55.24.63.38.08.14.08.82-.16 1.49z"/></svg>
                 <span>Escríbeme por WhatsApp</span>
               </a>
