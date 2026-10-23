@@ -70,19 +70,22 @@ document.addEventListener('DOMContentLoaded', () => {
         const graficoElement = document.getElementById('grafico-progreso');
         const porcentajeElement = document.getElementById('porcentaje-display');
 
-        graficoElement.className = 'grafico ' + claseColorProgreso;
+        if (graficoElement) {
+            graficoElement.className = 'grafico ' + claseColorProgreso;
+            const colorEstado = estadoGeneral.split('-')[1]; 
+            const colorDiagnosticoProp = getComputedStyle(document.body).getPropertyValue(`--color-${colorEstado}`) || 'var(--color-primary)'; 
 
-        const colorEstado = estadoGeneral.split('-')[1]; 
-        const colorDiagnosticoProp = getComputedStyle(document.body).getPropertyValue(`--color-${colorEstado}`) || 'var(--color-primary)'; 
+            graficoElement.style.background = `conic-gradient(
+                ${colorDiagnosticoProp} 0deg, 
+                ${colorDiagnosticoProp} ${porcentaje * 3.6}deg, 
+                var(--color-border) ${porcentaje * 3.6}deg, 
+                var(--color-border) 360deg
+            )`;
+        }
 
-        graficoElement.style.background = `conic-gradient(
-            ${colorDiagnosticoProp} 0deg, 
-            ${colorDiagnosticoProp} ${porcentaje * 3.6}deg, 
-            var(--color-border) ${porcentaje * 3.6}deg, 
-            var(--color-border) 360deg
-        )`;
-
-        porcentajeElement.textContent = `${porcentaje}%`;
+        if (porcentajeElement) {
+            porcentajeElement.textContent = `${porcentaje}%`;
+        }
 
         const emergenciaStatus = {
             'si': { strong: 'Cubierto', span: 'Satisfactorio', class: 'estado-satisfactorio' },
@@ -96,48 +99,72 @@ document.addEventListener('DOMContentLoaded', () => {
             'ninguno': { strong: 'Ausente', span: 'Riesgo Alto', class: 'estado-alerta' }
         }[results.q4_seguros] || { strong: 'Sin Datos', span: 'Evaluada', class: 'estado-neutro' };
 
-
-        const nombreInput = quizForm.querySelector('input[name="Nombre_Usuario"]').value || 'Estimado Cliente';
-        document.getElementById('titulo-resultados').textContent = `¡Aquí están tus resultados, ${nombreInput}!`;
-        document.getElementById('diagnostico-titulo').textContent = generalDiagnosis;
-        document.getElementById('diagnostico-mensaje').textContent = diagnosisMessage;
-        document.getElementById('metrica-puntuacion').textContent = `${totalScore}/${maxScore}`;
+        const nombreInput = quizForm.querySelector('input[name="Nombre_Usuario"]')?.value || 'Estimado Cliente';
+        
+        const tituloResultados = document.getElementById('titulo-resultados');
+        if (tituloResultados) tituloResultados.textContent = `¡Aquí están tus resultados, ${nombreInput}!`;
+        
+        const diagTitulo = document.getElementById('diagnostico-titulo');
+        if (diagTitulo) diagTitulo.textContent = generalDiagnosis;
+        
+        const diagMsg = document.getElementById('diagnostico-mensaje');
+        if (diagMsg) diagMsg.textContent = diagnosisMessage;
+        
+        const metricaPunt = document.getElementById('metrica-puntuacion');
+        if (metricaPunt) metricaPunt.textContent = `${totalScore}/${maxScore}`;
         
         let estadoPuntuacionSpan = 'Evaluación';
         if (totalScore >= RANGO_EXCELENTE) estadoPuntuacionSpan = 'Excelente Evaluación';
         else if (totalScore >= RANGO_BUENO) estadoPuntuacionSpan = 'Buena Evaluación';
         else estadoPuntuacionSpan = 'Baja Evaluación';
         
-        document.getElementById('estado-puntuacion').textContent = estadoPuntuacionSpan;
-        document.getElementById('estado-puntuacion').className = estadoGeneral;
-        document.getElementById('metrica-emergencia').textContent = emergenciaStatus.strong;
-        document.getElementById('estado-emergencia').textContent = emergenciaStatus.span;
-        document.getElementById('estado-emergencia').className = emergenciaStatus.class;
-        document.getElementById('metrica-proteccion').textContent = proteccionStatus.strong;
-        document.getElementById('estado-proteccion').textContent = proteccionStatus.span;
-        document.getElementById('estado-proteccion').className = proteccionStatus.class;
-        
-        const recProteccionDetalle = document.getElementById('rec-proteccion-detalle');
-        if (recProteccionDetalle) {
-             if (proteccionStatus.strong === 'Ausente' || proteccionStatus.strong === 'Parcial') {
-                 recProteccionDetalle.textContent = 'Dado que tu cobertura es ' + proteccionStatus.strong.toLowerCase() + ', te recomendamos explorar opciones flexibles de seguros de vida o de gastos médicos mayores para proteger el patrimonio y los ingresos de tu familia ante un evento inesperado.';
-             } else {
-                 recProteccionDetalle.textContent = 'Tu cobertura de protección es sólida. Sigue revisando tus pólizas anualmente para asegurar que cubran tus necesidades actuales.';
-             }
-        }
-        
-        const recRetiroDetalle = document.getElementById('rec-retiro-detalle');
-        if (recRetiroDetalle) {
-             if (results.q6_plan_retiro !== 'si' || results.q7_necesidad_retiro !== 'si') {
-                 recRetiroDetalle.textContent = 'Es fundamental formalizar un plan de retiro. Te ayudaremos a canalizar tu ahorro a instrumentos que ofrecen ventajas fiscales y crecimiento compuesto para que alcances la meta que necesitas.';
-             } else {
-                 recRetiroDetalle.textContent = 'Excelente planeación para el retiro. Te ayudaremos a revisar si estás optimizando al máximo las deducciones fiscales disponibles.';
-             }
+        const estadoPunt = document.getElementById('estado-puntuacion');
+        if (estadoPunt) {
+            estadoPunt.textContent = estadoPuntuacionSpan;
+            estadoPunt.className = estadoGeneral;
         }
 
-        // =========================================================
-        // LLENAR LAS CAJAS OCULTAS PARA EMAILJS
-        // =========================================================
+        const metEmergencia = document.getElementById('metrica-emergencia');
+        if (metEmergencia) metEmergencia.textContent = emergenciaStatus.strong;
+
+        const estEmergencia = document.getElementById('estado-emergencia');
+        if (estEmergencia) {
+            estEmergencia.textContent = emergenciaStatus.span;
+            estEmergencia.className = emergenciaStatus.class;
+        }
+
+        const metProteccion = document.getElementById('metrica-proteccion');
+        if (metProteccion) metProteccion.textContent = proteccionStatus.strong;
+
+        const estProteccion = document.getElementById('estado-proteccion');
+        if (estProteccion) {
+            estProteccion.textContent = proteccionStatus.span;
+            estProteccion.className = proteccionStatus.class;
+        }
+        
+        let txtRecProteccion = '';
+        const recProteccionDetalle = document.getElementById('rec-proteccion-detalle');
+        if (recProteccionDetalle) {
+            if (proteccionStatus.strong === 'Ausente' || proteccionStatus.strong === 'Parcial') {
+                txtRecProteccion = 'Dado que tu cobertura es ' + proteccionStatus.strong.toLowerCase() + ', te recomendamos explorar opciones flexibles de seguros de vida o de gastos médicos mayores para proteger el patrimonio y los ingresos de tu familia ante un evento inesperado.';
+            } else {
+                txtRecProteccion = 'Tu cobertura de protección es sólida. Sigue revisando tus pólizas anualmente para asegurar que cubran tus necesidades actuales.';
+            }
+            recProteccionDetalle.textContent = txtRecProteccion;
+        }
+        
+        let txtRecRetiro = '';
+        const recRetiroDetalle = document.getElementById('rec-retiro-detalle');
+        if (recRetiroDetalle) {
+            if (results.q6_plan_retiro !== 'si' || results.q7_necesidad_retiro !== 'si') {
+                txtRecRetiro = 'Es fundamental formalizar un plan de retiro. Te ayudaremos a canalizar tu ahorro a instrumentos que ofrecen ventajas fiscales y crecimiento compuesto para que alcances la meta que necesitas.';
+            } else {
+                txtRecRetiro = 'Excelente planeación para el retiro. Te ayudaremos a revisar si estás optimizando al máximo las deducciones fiscales disponibles.';
+            }
+            recRetiroDetalle.textContent = txtRecRetiro;
+        }
+
+        // Llenar inputs ocultos del DOM
         const setFormValue = (name, value) => {
             const input = quizForm.querySelector(`input[name="${name}"]`);
             if (input) input.value = value;
@@ -152,11 +179,25 @@ document.addEventListener('DOMContentLoaded', () => {
         setFormValue('Estado_Emergencia', emergenciaStatus.span);
         setFormValue('Cobertura_Proteccion', proteccionStatus.strong);
         setFormValue('Estado_Proteccion', proteccionStatus.span);
-        
-        if(recProteccionDetalle) setFormValue('Rec_Proteccion', recProteccionDetalle.textContent);
-        if(recRetiroDetalle) setFormValue('Rec_Retiro', recRetiroDetalle.textContent);
+        setFormValue('Rec_Proteccion', txtRecProteccion);
+        setFormValue('Rec_Retiro', txtRecRetiro);
 
         resultadosSection.classList.remove('hidden');
+
+        // Retornar los valores empaquetados directamente
+        return {
+            Resultado_Analisis_Final: generalDiagnosis,
+            Porcentaje: `${porcentaje}%`,
+            Diagnostico_Mensaje: diagnosisMessage,
+            Puntuacion: `${totalScore}/${maxScore}`,
+            Estado_Puntuacion: estadoPuntuacionSpan,
+            Fondo_Emergencia: emergenciaStatus.strong,
+            Estado_Emergencia: emergenciaStatus.span,
+            Cobertura_Proteccion: proteccionStatus.strong,
+            Estado_Proteccion: proteccionStatus.span,
+            Rec_Proteccion: txtRecProteccion,
+            Rec_Retiro: txtRecRetiro
+        };
     }
 
     function resetForm() {
@@ -164,44 +205,64 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // =======================================================================
-    // FUNCIÓN DE ENVÍO CON EMAILJS
+    // FUNCIÓN DE ENVÍO DIRECTO CON EMAILJS (EVITA ERROR 422 RECIPIENTS EMPTY)
     // =======================================================================
     quizForm.addEventListener('submit', (e) => {
         e.preventDefault(); 
-        
+
+        // Leer datos del cliente antes de ocultar secciones
+        const inputCorreo = document.getElementById('email') || quizForm.querySelector('input[name="email"]');
+        const inputNombre = quizForm.querySelector('input[name="Nombre_Usuario"]');
+
+        const correoCliente = inputCorreo ? inputCorreo.value.trim() : '';
+        const nombreCliente = inputNombre ? inputNombre.value.trim() : 'Cliente';
+
+        if (!correoCliente) {
+            alert('Por favor introduce un correo electrónico válido.');
+            return;
+        }
+
         const originalBtnText = btnSubmit.textContent;
         btnSubmit.textContent = 'Calculando y enviando...';
         btnSubmit.disabled = true;
-        
+
         calculadoraSection.classList.add('hidden');
         if (asesoraSection) asesoraSection.classList.add('hidden');
         if (heroSection) heroSection.classList.add('hidden');
-        
-        calculateAndDisplayResults(); 
-        
+
+        const datosCalculados = calculateAndDisplayResults(); 
+
         window.scrollTo({
             top: 0,
             behavior: 'smooth'
         });
 
-        emailjs.sendForm('service_c6vt4ce', 'template_9wz4mh3', quizForm)
+        // Empaquetar el payload con 'email' garantizado
+        const templateParams = {
+            email: correoCliente,
+            Nombre_Usuario: nombreCliente,
+            ...datosCalculados
+        };
+
+        // Usamos emailjs.send (genera POST a /email/send en lugar de send-form)
+        emailjs.send('service_c6vt4ce', 'template_9wz4mh3', templateParams)
         .then(() => {
-            console.log("¡Éxito! Correo enviado al cliente y a Damaris.");
+            console.log("¡Éxito! Correo enviado correctamente al cliente:", correoCliente);
             btnSubmit.textContent = originalBtnText; 
             btnSubmit.disabled = false;
         }, (error) => {
-            console.error("Error al enviar el correo:", error.text);
+            console.error("Error al enviar el correo:", error);
             btnSubmit.textContent = originalBtnText;
             btnSubmit.disabled = false;
         });
     });
 
-    // Lógica para los botones de Asesoría (WhatsApp)
+    // WhatsApp CTA
     const asesoriaButtons = document.querySelectorAll('.btn-asesoria');
     asesoriaButtons.forEach(button => {
         button.addEventListener('click', (e) => {
             e.preventDefault();
-            let userName = quizForm.querySelector('input[name="Nombre_Usuario"]').value;
+            let userName = quizForm.querySelector('input[name="Nombre_Usuario"]')?.value;
             let baseMessage = "Hola Damaris, acabo de completar el Check Up Financiero y me gustaría agendar una Asesoría Gratuita para revisar mis resultados.";
             if (userName) baseMessage += ` Mi nombre es ${userName}.`;
             const encodedMessage = encodeURIComponent(baseMessage);
@@ -210,7 +271,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Lógica para el botón de Regresar al Inicio
+    // Regresar al Inicio
     if (btnRegresarInicio) {
         btnRegresarInicio.addEventListener('click', (e) => {
             e.preventDefault();

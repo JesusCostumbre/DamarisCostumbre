@@ -13,7 +13,7 @@
 
     <header>
         <div class="logo">
-            <h1 href="./index.html">Damaris Costumbre Economista</h1>
+            <h1><a href="../index.html" style="text-decoration: none; color: inherit;">Damaris Costumbre Economista</a></h1>
         </div>
     </header>
 
@@ -113,15 +113,8 @@
                 <fieldset class="contacto">
                     <legend>Datos de Contacto</legend>
                     <p style="text-align: left;">Para recibir tu diagnóstico personalizado, introduce tu nombre y correo:</p>
-                    <input type="text" name="Nombre_Usuario" placeholder="Tu nombre completo" required>
-                    <input 
-                        type="email" 
-                        name="_replyto" 
-                        placeholder="Tu correo electrónico" 
-                        required
-                        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
-                        title="Introduce una dirección de correo electrónico válida (ej: nombre@dominio.com)"
-                    >
+                    <input type="text" name="Nombre_Usuario" id="Nombre_Usuario" placeholder="Tu nombre completo" required>
+                    <input type="email" name="email" id="email" placeholder="Tu correo electrónico" required>
                 </fieldset>
 
                 <input type="hidden" name="Resultado_Analisis_Final">
@@ -147,7 +140,6 @@
                 <button type="submit" id="btn-submit">Obtener Análisis Gratuito</button>
             </form>
         </section>
-        
         
         <section id="resultados-analisis" class="container hidden">
             <div id="pdf-content-wrapper"> 
@@ -206,7 +198,7 @@
                 </div>
 
                 <div class="asesora-contacto-resultados">
-                    <img src="/diagnostico/assets/foto_perfil.webp" alt="Retrato de Damaris Costumbre, Agente de Seguros Certificada">
+                    <img src="assets/foto_perfil.webp" alt="Retrato de Damaris Costumbre, Agente de Seguros Certificada">
                     <div style="flex-grow: 1;">
                         <p><strong>Damaris Costumbre</strong><br>Agente de Seguros Certificada</p>
                         <p style="color: var(--color-support); font-size: 0.85rem;">Mi misión es ayudarte a construir un futuro financiero sólido y tranquilo.</p>
@@ -227,21 +219,21 @@
     </main>
 
     <footer class="text-center py-6 text-sm text-gray-500">
-  <p>© 2025 Damaris Costumbre Seguros. Todos los derechos reservados.</p>
-  <p>Tus datos son confidenciales y están protegidos.</p>
-  <div class="mt-2">
-    <a href="./aviso-de-privacidad.html" class="hover:underline">Aviso de Privacidad</a> | 
-  </div>
-</footer>
+        <p>© 2025 Damaris Costumbre Seguros. Todos los derechos reservados.</p>
+        <p>Tus datos son confidenciales y están protegidos.</p>
+        <div class="mt-2">
+            <a href="./aviso-de-privacidad.html" class="hover:underline">Aviso de Privacidad</a>
+        </div>
+    </footer>
 
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <script type="text/javascript">
        (function(){
           emailjs.init({
-            publicKey: "7vxaO77nHttziBi1S", // <--- OJO: Recuerda volver a poner tu código de EmailJS aquí
+            publicKey: "7vxaO77nHttziBi1S",
           });
        })();
     </script>
-    <script src="script.js"></script>
+    <script src="script.js?v=2.0"></script>
 </body>
 </html>
